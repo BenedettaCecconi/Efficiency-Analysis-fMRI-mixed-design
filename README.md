@@ -1,11 +1,14 @@
-<h1>Efficiency estimation: comparison of two fMRI designs</h1>
+<h1>Efficiency estimation: comparison of two fMRI mixed designs</h1>
+
+This information was compiled with the help of Prof. Christophe Phillips and Prof. Melanie Boly
 
 ## Efficiency: what it is and why its a priori estimation is important 
 
-When designing an fMRI study, a good practice is to estimate the efficiency of the design a priori. This way, one can compare different designs and choose the most efficient one. The efficiency is defined as "a measure of how reliable [an estimator] is and depends on error variance (the variance not modeled by explanatory variables in the design matrix) and the design variance (a function of the explanatory variables and the contrast tested). Changes in the experimental design can induce changes in the variance of estimated responses" (Mechelli, Andrea et al., NeuroImage vol. 18,3 (2003), doi:10.1016/s1053-8119(02)00040-x). 
+When designing an fMRI study, a good practice is to estimate the efficiency of the design a priori. This way, one can compare different designs and choose the most efficient one. The efficiency is defined as "a measure of how reliable [an estimator] is and depends on error variance (the variance not modeled by explanatory variables in the design matrix) and the design variance (a function of the explanatory variables and the contrast tested). Changes in the experimental design can induce changes in the variance of estimated responses" (Mechelli, Andrea et al., NeuroImage vol. 18,3 (2003), doi:10.1016/s1053-8119(02)00040-x). Please note that the efficiency calculation is related to the number of scans (i.e., to a given TR and duration of the experiment), and specific to a given contrast. Thus, you cannot compare in terms of efficiency designs with different numbers of scans or designs with different contrasts.
 
 ## Scope of this project and what is in this repository 
-Here we provide an example of estimation (and comparison) of the efficiency of two fMRI designs. The goal is to choose the design in which the timing of the stimuli is most efficient in detecting the investigated effects. You will find a code to calculate the efficiency ("Efficiency_Analysis") and a folder with onsets generator functions (folder name: "Onsets_Generator"), needed to generate onsets for each of our two designs. In what follows, we will describe in detail our fMRI experimental design, so as to give a context to our codes and make them easier to understand.
+The purpose of this project is to provide a beginner's guide on how to perform efficiency analysis given two (or more) designs. 
+Here we provide an example of estimation (and comparison) of the efficiency of two mixed fMRI designs. The goal is to choose the design in which the timing of the stimuli is most efficient in detecting the investigated effects. You will find a code to calculate the efficiency ("Efficiency_Analysis") and a folder with onsets generator functions (folder name: "Onsets_Generator"), needed to generate onsets for each of our two designs. In what follows, we will describe in detail our fMRI experimental design, so as to give a context to our codes and make them easier to understand.
 
 ## Experimental design
 In this example, we chose a mixed block/event-related design. Such a design allows for the simultaneous modelling of the transient, trial-related activity, and the sustained, task-related BOLD activity. That is, by alternating control blocks (silence blocks) with task blocks (where we deliver sounds) we can model the HRF for different types of events within each trial and the HRF for all events combined:
@@ -40,7 +43,7 @@ Is this the most efficient design to detect the difference between std and dev e
 
 ### Design2 = Roving oddball
 
-In Design2, in each 45s-task block, we provide a series of trials consisting of a variable number of events, from 2 to 11. These trials follow the roving oddball rule: that is, in each trial, all sounds are of the same frequency, but the first event of a trial is deviant since it is of a different frequency compared to the frequency used in the precedent trial. In other words, the deviant becomes eventually a standard as a result of being presented multiple times. To get a schematic representation of the roving oddball paradigm, see the figures below: 
+In Design2, in each 45s-task block, we provide a series of trials consisting of a variable number of events, from 1 to 11. These trials follow the roving oddball rule: that is, in each trial, all sounds are of the same frequency, but the first event of a trial is deviant since it is of a different frequency compared to the frequency used in the precedent trial. In other words, the deviant becomes eventually a standard as a result of being presented multiple times. To get a schematic representation of the roving oddball paradigm, see the figures below: 
 
 <p align="center">
 <img width="333" alt="image" src="https://user-images.githubusercontent.com/103193288/162636628-e5d1468f-ef1f-437f-90e5-555b4c0c52b8.png">
@@ -72,8 +75,21 @@ In the figure above, we can indeed see that the distribution of efficiency value
 <img width="464" alt="image" src="https://user-images.githubusercontent.com/103193288/162638129-e14e546d-4782-46e3-a7d1-acc552eeced0.png">
 </p> 
 
-As can be seen from the last figure, the mean of the distribution of efficiency values for the classical oddball is substantially higher than that for the roving.
+As can be seen from the last figure, the mean of the distribution of efficiency values for the classical oddball is higher than that for the roving.
 
 
 
+## References:
+
+For a general introduction to efficiency: 
+Mechelli, Andrea et al. (2003). Estimating efficiency a priori: A comparison of blocked and randomized designs. Mechelli, A. and Price, C.J. and Henson, R.N. and Friston, K.J. (2003) Estimating efficiency a priori: a comparison of blocked and randomized designs. NeuroImage, 18 (3). pp.798 - 805 . ISSN 10538119. 18. 10.1016/S1053-8119(02)00040-X. 
+
+For the "classic" oddball (only local effect):
+Bekinschtein, Tristan et al. (2009). Neural signature of the conscious processing of auditory regularities. Proceedings of the National Academy of Sciences of the United States of America. 106. 1672-7. 10.1073/pnas.0809667106. 
+
+For the roving oddball: 
+Garrido, Marta et al. (2008). The functional anatomy of the MMN: A DCM study of the roving paradigm. NeuroImage. 42. 936-44. 10.1016/j.neuroimage.2008.05.018. 
+
+For an accessible and practical introduction to efficiency analysis, watch Prof. Jeanette Mumford's video series:
+https://www.youtube.com/playlist?list=PLB2iAtgpI4YEnBdb_jDGmMcdGoIBwhCCY
 
