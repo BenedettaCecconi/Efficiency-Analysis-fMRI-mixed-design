@@ -8,7 +8,7 @@
 %(i.e., 1 trial = 1 dev + 2/11 std); 
 %in the second, a classic version of the oddball paradigm (1 trial = 4 std + dev)
 
-%We want to see if jittering the repetition of std brings significant benefits in
+%We want to see if randomizing the repetition of std brings significant benefits in
 %terms of efficiency to our design.
 
 %For more information on our design, paradigm and stimuli used, please look at
@@ -154,7 +154,7 @@ xlabel('Contrasts')
 ylabel('Efficiency Values')
 
 % if we plot the three distributions of the eff values separately for each
-% contrast, we can see in fact how that for the std effect reaches well up to 5.4723
+% contrast, we can see in fact that for the std effect reaches well up to 5.4723
 
 figure()
 subplot(3,1,1)
@@ -212,6 +212,8 @@ for k=1:nsim
     onset_std_classic{1,k} = (test_set{1,k}.onset(test_set{1,k}.action == 's')/1000);
     onset_dev_classic{1,k} = (test_set{1,k}.onset(test_set{1,k}.action == 'd')/1000);
     
+    freq_std = e.freq(e.action == 's');
+    freq_dev = e.freq(e.action == 'd');
 end
 
 %Since it takes a lot time to run 1000 simulations, I uploaded the
@@ -272,7 +274,7 @@ end
 
 %% PlOTS: comparing the two designs
 %In this study we are mainly interested in the efficiency for the 3rd contrast
-%(std-dev). Let's plot then the efficiency distribuitions of the difference std/dev 
+%(std-dev). Let's plot then the efficiency distribuitions of the (contrast) difference std/dev 
 %for the classic vs roving design
 
 figure()
