@@ -60,3 +60,16 @@ Here (left, roving oddball; right, classic oddball), in addition to the time ser
 
 We can conclude that the Classic design is better in terms of efficiency but worse in terms of collinearity and frequency than the Roving design. In our case, we decided to create a hybrid version of the two: a classic oddball with randomized repetition of standards between 3 and 5. In this way, we found a compromise between efficiency, collinearity and frequency.
 
+## Appendix
+
+### Fill the SPM module to estimate collinearity with med, max, and min distribuitions of onsets
+
+Before, when we filled the SPM batch, we randomly took the first (out of 1000) onsets simulation and checked the orthogonality matrix. To be more precise, we can also enter, under "onsets" for both conditions, the onsets of the median, maximum, and minimum distributions of efficiency values of the 1000 simulations of each design. That is, we identify the indices of the med, min, and max in the efficiency distribution (1000 values). These indices correspond to the number of the simulation (see Fig. 1). We can therefore input the corresponding simulation of onsets in SPM, resulting in three potential comparisons: the “max” simulation of onsets for the roving vs the “max” simulation of onsets for the classic; the “min” simulation of onsets for the roving vs the “min” simulation of onsets for the classic; the “median” simulation of onsets for the roving vs the “median” simulation of onsets for the classic. 
+
+Here, as an example, I plotted the distribution of efficiency values for contrast std-dev (Roving):
+
+<p align="center">
+<img width="572" alt="image" src="https://user-images.githubusercontent.com/103193288/164314255-212de29a-9502-451b-8185-2bbbda884140.png">
+</p>
+
+To generate med, min and max onsets I uploaded the script "Collinearity_Analysis_SPM". Once the onsets are generated, you can refill the batch and repeat the procedure described above.
