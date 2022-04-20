@@ -29,7 +29,7 @@
 %% Generation of onsets for the 1st design (Roving oddball)
 %Let's generate std and dev onsets for our first design,
 %in which we use the Roving Oddball paradigm. We need to estimate a distribuition of onsets, since 
-%number of std repetitions, iti and the lenght of silence blocks are jittered
+%number of std repetitions are randomized and iti and the lenght of silence blocks are jittered
 
 nsim = 1000;
 test_set = cell(1,nsim); 
