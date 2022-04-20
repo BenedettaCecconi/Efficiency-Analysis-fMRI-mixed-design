@@ -1,4 +1,4 @@
-%The following code is adapted from Dr. Jeanette Mumford's code. 
+%The following code is adapted from Dr. Jeanette Mumford's code by Benedetta Cecconi 
 %You can find her code at this link: https://www.dropbox.com/sh/zp4foawa4c5w5rr/AAAfQ0mv-CHKj1c63ihC-ZBca?dl=0 
 %She also has a nice series of YouTube videos on efficiency in MRI studies
 %that you might want to check out: https://www.youtube.com/watch?v=FD4ztsoYvSY&list=TLPQMDcwNDIwMjK8Dkl-HxtRFw&index=1
