@@ -10,7 +10,19 @@ Please note that the efficiency calculation is related to the number of scans (i
 
 ## Scope of this project and what is in this repository 
 The purpose of this project is to provide a beginner's guide on how to perform efficiency analysis given two (or more) designs. 
-Here we provide an example of estimation (and comparison) of the efficiency of two mixed fMRI designs. The goal is to choose the design in which the timing of the stimuli is most efficient in detecting the investigated effects. You will find a code to calculate the efficiency ("Efficiency_Analysis") and a folder with onsets generator functions (folder name: "Onsets_Generator"), needed to generate onsets for each of our two designs. In what follows, we will describe in detail our fMRI experimental design, so as to give a context to our codes and make them easier to understand.
+Here we provide an example of estimation (and comparison) of the efficiency of two mixed fMRI designs. The goal is to choose the design in which the timing of the stimuli is most efficient in detecting the investigated effects. You will find 
+
+- a code to calculate efficiency ("Efficiency_Analysis") 
+
+- a folder with onsets generator functions (folder name: "Onsets_Generator"), needed to generate onsets for each of our two designs (used in the "Efficiency_Analysis" script)
+
+- onsets already generated for both conditions (in case you don't want to run the functions yourself): i.e., "Onsets_Classic.mat" and "Onsets_Roving.mat"
+
+- a function to generate the canonical hrf, used in the "Efficiency_Analysis" script, i.e. "spm_hrf.m"
+
+- another readme file titled "Design_orthogonality": a short tutorial on how to estimate the degree of collinearity between regressors using SPM12. In fact, when deciding between two designs, apart from efficiency considerations, it is important to also take into account the degree of collinearity between the conditions. Collinearity indicates the degree to which two separate conditions correlate or, in other words, "collinearity occurs when there is pairwise correlation between either single regressors or linear combinations of multiple regressor" (Mumford, Jeanette et al. (2015)). For more info on collinearity and design orthogonality, see "Design_orthogonality.md" .
+
+In what follows, we will describe in detail our fMRI experimental design, so as to give a context to our codes and make them easier to understand.
 
 ## Experimental design
 In this example, we chose a mixed block/event-related design. Such a design allows for the simultaneous modelling of the transient, trial-related activity, and the sustained, task-related BOLD activity. That is, by alternating control blocks (silence blocks) with task blocks (where we deliver sounds) we can model the HRF for different types of events within each trial and the HRF for all events combined:
@@ -94,4 +106,6 @@ Garrido, Marta et al. (2008). The functional anatomy of the MMN: A DCM study of 
 
 For an accessible and practical introduction to efficiency analysis, watch Prof. Jeanette Mumford's video series:
 https://www.youtube.com/playlist?list=PLB2iAtgpI4YEnBdb_jDGmMcdGoIBwhCCY
+
+On collinearity and orthogonalization: Mumford, Jeanette et al. (2015). Orthogonalization of Regressors in fMRI Models. PLOS ONE. 10. e0126255. 10.1371/journal.pone.0126255. 
 
