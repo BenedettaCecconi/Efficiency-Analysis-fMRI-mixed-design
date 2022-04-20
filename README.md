@@ -20,7 +20,7 @@ Here we provide an example of estimation (and comparison) of the efficiency of t
 
 - a function to generate the canonical hrf, used in the "Efficiency_Analysis" script, i.e. "spm_hrf.m"
 
-- another readme file titled "Design_orthogonality": a short tutorial on how to estimate the degree of collinearity between regressors using SPM12. In fact, when deciding between two designs, apart from efficiency considerations, it is important to also take into account the degree of collinearity between the conditions. Collinearity indicates the degree to which two separate conditions correlate or, in other words, "collinearity occurs when there is pairwise correlation between either single regressors or linear combinations of multiple regressor" (Mumford, Jeanette et al. (2015)). For more info on collinearity and design orthogonality, see "Design_orthogonality.md" .
+- another readme file titled "Design_orthogonality" and other files starting with "Collinearity..": in these documents, I give a brief tutorial on how to estimate the degree of collinearity between regressors using SPM12. In fact, when deciding between two designs, apart from efficiency considerations, it is important to also take into account the degree of collinearity between the conditions. Collinearity indicates the degree to which two separate conditions correlate or, in other words, "collinearity occurs when there is pairwise correlation between either single regressors or linear combinations of multiple regressor" (Mumford, Jeanette et al. (2015)). For more info on collinearity and design orthogonality, see "Design_orthogonality.md" .
 
 In what follows, we will describe in detail our fMRI experimental design, so as to give a context to our codes and make them easier to understand.
 
