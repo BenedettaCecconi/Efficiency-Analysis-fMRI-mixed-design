@@ -72,4 +72,4 @@ Here, as an example, I plotted the distribution of efficiency values for contras
 <img width="572" alt="image" src="https://user-images.githubusercontent.com/103193288/164314255-212de29a-9502-451b-8185-2bbbda884140.png">
 </p>
 
-To generate med, min and max onsets I uploaded the script "Collinearity_Analysis_SPM". Once the onsets are generated, you can refill the batch and repeat the procedure described above.
+To generate med, min and max onsets I uploaded the script "Collinearity_SPM". Once the onsets are generated, you can refill the batch and repeat the procedure described above.
