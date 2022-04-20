@@ -1,30 +1,41 @@
-% % Questa funzione genera un trial di tipo Classic
-%   Una sequenza ssssd
+% Written by Benedetta Cecconi and Carlo Alberto Avizzano 
+
+
+%This function generates a trial of type Classic or, if 
+%called with several parameters, a trial of different type (e.g. roving)
 %
-%  Usage: TrialClassic(isDeviant, iti, n_std)
-%  isDeviant set to 1 for deviant trial type
-%  iti set final pause in ms
 % 
-% Legenda s --> standard
-% Legenda w --> wait 100ms dur_ms (ISI)
-% Legenda d --> deviant
-% Legenda i --> iti
-% Legenda p --> silence/pause
+
+%     Usage: TrialClassic(isDeviant, iti)
+%     isDeviant set to 1 for deviant trial type
+%     Sequence ssssdi (deviant == 1) or sssssi (deviant == 0)
+%     iti sets the final pause in ms that is calculated at higher level
+%
+%  Roving use: 
+%     Usage: TrialClassic(0, iti, n_std, override_freq)
+%     s..#n_std..s with frequency "override_freq"
+      %isDeviant here is meaningless and should be left at 0
+%
+%  s --> standard events
+%  w --> ISI
+%  d --> deviant events
+%  i --> ITI
+%  p --> silence/pause blocks
 
 function [trial, length] = TrialClassic(isDeviant, iti, n_std, override_freq)
-    if nargin <2 or nargin >4
+    if nargin <2 || nargin >4
         help ODDBALL.TrialClassic
-        error('Two or three parameters were expected')
+        error('Two or four parameters were expected')
     end
     if nargin == 2
         n_std = 4;
     end
     stimuli = struct;
-    stimuli.std.freq=100; % Frequenza per lo stimolo standard
-    stimuli.std.dur_ms = 50; % durata in ms dello stimolo standard
-    stimuli.dev.freq=400; % Frequenza per lo stimolo deviant
-    stimuli.dev.dur_ms = 50; % durata in ms dello stimolo deviant
-    stimuli.isi.dur_ms = 100;% pausa di attesa tra due stimoli
+    stimuli.std.freq=100; % Frequency standard stimuli
+    stimuli.std.dur_ms = 50; % duration (ms) of standard stimulus
+    stimuli.dev.freq=400; % Frequency deviant stimuli
+    stimuli.dev.dur_ms = 50; % duration (ms) of deviant stimulus
+    stimuli.isi.dur_ms = 100;% isi
     stimuli.seq_nodev= [repmat(['s','w'],1, n_std), 's','i']; 
     stimuli.seq_dev= [repmat(['s','w'],1, n_std),'d','i']; 
 
@@ -67,7 +78,7 @@ function [trial, length] = TrialClassic(isDeviant, iti, n_std, override_freq)
         startime = startime + trial.dur_ms(end);
     end
     length = startime;
-    % Se non assegno i valori allora mostro il risultato a schermo
+    % If I don't assign values then I show the result on screen
     if nargout == 0
         trial 
         length

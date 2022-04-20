@@ -1,25 +1,27 @@
-% Questa funzione genera una sequenza di 30 trial intervallati 
-% da silenzi variabili tra .7 e 1 secondo.
-% La durata complessiva media di trial + silenzo e' di 1.5s
-% per un totale di 45 secondi.
+% Written by Benedetta Cecconi and Carlo Alberto Avizzano
+
+% This function generates a sequence of 30 trials interspersed with silences  
+% varying between .7 and 1 second.
+%The total average duration of trial + silence is 1.5s
+%for a total of 45 seconds.
 %
 %
-% vi sono dei calcoli impliciti:
-% La lunghezza complessiva degli esperimenti è 650ms*30 =19500ms
-% Per cui il tempo totale di pausa sarà 45000-19500= 25500
-% Siccome la granularità degli intervalli è 50ms ed ho una 
-% funzione (random pauses) che funziona a numeri interi lavoro
-% dividendo tali valori per 50
-% significa che il vettore 700:50:1000 lo rappresento come
-%  (14:1:20)*50 e 25500 diventa 510*50.
-% per cui chiamo RandomPauses con (510,29,10,20)
+% There are implicit calculations:
+% The total length of the experiments is 650ms*30 =19500ms
+% So the total pause time will be 45000-19500= 25500
+% Since the granularity of the intervals is 50ms and I have a 
+% function ("RandomPauses") that works with integers I work dividing these values by 50
+% that is, I represent the vector 700:50:1000 as
+% (14:1:20)*50 and 25500 becomes 510*50.
+% So I call RandomPauses with (510,29,10,20)
 % sum(ODDBALL.RandomPauses(510,29,10,20)*50)
 %      ans = 25500
-% Legenda s --> standard
-% Legenda w --> wait 100ms dur_ms (ISI)
-% Legenda d --> deviant
-% Legenda i --> iti
-% Legenda p --> silence/pause
+
+%  s --> standard events
+%  w --> ISI
+%  d --> deviant events
+%  i --> ITI
+%  p --> silence/pause blocks
 
 function [blk, len] = BlockClassic(isDeviant, blockPause)
     block = struct;

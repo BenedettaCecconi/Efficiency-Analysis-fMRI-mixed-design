@@ -1,18 +1,21 @@
-% % Questa funzione genera un trial di tipo Classic
-%   Una sequenza ssssd
+%% Written by Benedetta Cecconi and Carlo Alberto Avizzano 
+
+
+% This function generates a trial of type Classic:
+% A ssssd sequence
 %
 %  Usage: TrialRoving(isDeviant, iti, n_std)
 %  isDeviant set to 1 for deviant trial type
-%  iti set final pause in ms
+%  iti sets final pause in ms
 % 
-% Legenda s --> standard
-% Legenda w --> wait 100ms dur_ms (ISI)
-% Legenda d --> deviant
-% Legenda i --> iti
-% Legenda p --> silence/pause
+%  s --> standard events
+%  w --> ISI
+%  d --> deviant events
+%  i --> ITI
+%  p --> silence/pause blocks
 
 function [trial, length] = TrialRoving(isDeviant, iti, freq)
-    n_elem = 1 + randi(10); % numero di stimoli
+    n_elem = 1 + randi(10); % number of stimuli
     [trial, length] = ODDBALL.TrialClassic(0, iti, n_elem, freq);
     if isDeviant == 1
         trial.action(1) = 'd';

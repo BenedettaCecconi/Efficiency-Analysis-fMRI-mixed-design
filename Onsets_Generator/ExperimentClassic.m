@@ -1,6 +1,9 @@
-% % Questa funzione genera un esperimenti Classic 
-% prende un parametro per discriminare tra ABBA e Interleaved
-% Utilizzo:
+% Written by Benedetta Cecconi and Carlo Alberto Avizzano 
+
+% % This function generates a Classic experiment:
+% takes a parameter to discriminate between ABBA and Interleaved
+
+% Usage:
 %
 %    ExperimentClassic(mode, blockGenerator)
 %
@@ -8,8 +11,8 @@
 % mode == 'inter'
 %
 %
-% blockGenerator is a lambda function that call backs the function
-% generating individual blocks
+% blockGenerator is a lambda function that calls the function
+% that generates the individual blocks
 % 
 % Example of lambdas
 %      classic = @(isDev, IBI) ODDBALL.BlockClassic(isi, IBI)
@@ -17,11 +20,11 @@
 %      Mixed35 = @(isDev, IBI) ODDBALL.BlockMixed(isi, IBI, 30, 3, 5)
 %
 %         
-% Legenda s --> standard
-% Legenda w --> wait 100ms dur_ms (ISI)
-% Legenda d --> deviant
-% Legenda i --> iti
-% Legenda p --> silence/pause
+%  s --> standard events
+%  w --> ISI
+%  d --> deviant events
+%  i --> ITI
+%  p --> silence/pause blocks
 
 function [exp,len] = ExperimentClassic(mode, blockGenerator)
     experiment = struct;
@@ -57,18 +60,18 @@ function [exp,len] = ExperimentClassic(mode, blockGenerator)
                 task_type = [ 1 0 task_type];
             end
         end
-        % For odd length adding a negate start input
+        % For odd length adding a negative start input
         if mod(experiment.nblocks,2)==1
             % Primo complementare al secondo
             startTT = 1 - task_type(1);
-            % Alternativa
-            % primo completamente a caso
+            % 2nd option:
+            % first block completely random
             % startTT = randi(2)-1; 
             task_type = [ startTT task_type];
         end
     elseif strcmp(mode, 'inter')==1
         task_type=[];
-        % modo interleaved ammette abab oppure bababa
+        % interleaved modality allows abab or bababa
 %         if rand<0.5
 %             model = [ 0 1 task_type];
 %         else
@@ -77,9 +80,9 @@ function [exp,len] = ExperimentClassic(mode, blockGenerator)
 %         for cycle = 1:2:(experiment.nblocks)
 %             task_type = [ model task_type];
 %         end    
-%         % For odd length adding a negate start input
+%         % For odd length adding a negative start input
 %         if mod(experiment.nblocks,2)==1
-%             % Primo complementare al secondo
+%             % first block complementary to second one
 %             startTT = 1 - task_type(1);
 %             task_type = [ startTT task_type];
 %         end
@@ -98,7 +101,13 @@ function [exp,len] = ExperimentClassic(mode, blockGenerator)
     end
 
     for cycle = 1:numel(task_type)
-        [blk, blk_len] = blockGenerator(task_type(cycle), experiment.IBIes(cycle));
+        try
+            [blk, blk_len] = blockGenerator(task_type(cycle), experiment.IBIes(cycle));
+        catch err
+            experiment.IBIes
+            cycle
+            error(err.message)
+        end
         blk.onset = blk.onset+starttime;
         starttime = starttime + blk_len;
         blk.deviantBlock = task_type(cycle)*ones(1, numel(blk.onset));

@@ -1,11 +1,13 @@
-% This function joins all arrays in a struct with a second same-shape
-% struct. It is used to combine trials into blocks and blocks into 
-% experiments
+% Written by Benedetta Cecconi and Carlo Alberto Avizzano 
+
+% This function joins all arrays of a struct with a second struct of the same form
+% It is used to combine trials into blocks and blocks into experiments
+
+% iti sets the final pause in ms which is calculated at higher level
 %
 % Usage:
 %   joined = ODDBALL.joinFieldVects(previous, addon)
-%
-%
+
 function joined = joinFieldVects(prev, add)
 try
     fn = fieldnames(prev);

@@ -1,6 +1,7 @@
 % Written by Benedetta Cecconi and Carlo Alberto Avizzano
 
 % Requires two input parameters of type string
+
 %  Blocktype defines which generator of blocks to use
 %      'Classic': sequences ssssd
 %      'Rowing' : sequences 2-11 with variable frequency + d
@@ -20,9 +21,9 @@ function run = new(Blocktype, Blockorder)
     run.freq = [];
     run.dur_ms = [];
 
-    bt = strcmp(Blocktype, {'Classic', 'Roving', 'Mixed37', 'Mixed35'});
+    bt = strcmp(Blocktype, {'Classic', 'Roving', 'Mixed35', 'Mixed47'});
     if sum(bt) == 0
-        error('Tipo di esperimento indefinito')
+        error('Type of experiment undefined')
     end
 
     switch find(bt)
@@ -34,10 +35,10 @@ function run = new(Blocktype, Blockorder)
             blockgen = @(isDev, IBI) ODDBALL.BlockRovingTrialConstr(isDev, IBI, 22, 31);
         case 3
             expgen=@ODDBALL.ExperimentClassic;
-            blockgen= @(isDev, IBI) ODDBALL.BlockMixed(isDev, IBI, 30, 3, 7);
+            blockgen= @(isDev, IBI) ODDBALL.BlockMixed(isDev, IBI, 30, 3, 5);
         case 4
             expgen=@ODDBALL.ExperimentClassic;
-            blockgen= @(isDev, IBI) ODDBALL.BlockMixed(isDev, IBI, 30, 3, 5);
+            blockgen= @(isDev, IBI) ODDBALL.BlockMixed(isDev, IBI, 30, 4, 7);
     end
     run = expgen(Blockorder, blockgen);
 end
