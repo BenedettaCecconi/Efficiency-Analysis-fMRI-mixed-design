@@ -6,7 +6,7 @@ This information was compiled with the help of Prof. Christophe Phillips and Pro
 
 When designing an fMRI study, a good practice is to estimate the efficiency of the design a priori. This way, one can compare different designs and choose the most efficient one. The efficiency is defined as "a measure of how reliable [an estimator] is and depends on error variance (the variance not modeled by explanatory variables in the design matrix) and the design variance (a function of the explanatory variables and the contrast tested). Changes in the experimental design can induce changes in the variance of estimated responses" (Mechelli, Andrea et al., (2003)). 
 
-Please note that the efficiency calculation is related to the number of scans (i.e., to a given TR and duration of the experiment), and specific to a given contrast. Thus, you cannot compare in terms of efficiency designs with different numbers of scans or designs with different contrasts.
+Please note that the efficiency calculation is related to the number of scans (i.e., to a given TR and duration of the experiment), and specific to a given contrast. Thus, you cannot compare, in terms of efficiency, designs with different numbers of scans or designs with different contrasts.
 
 ## Scope of this project and what is in this repository 
 The purpose of this project is to provide a beginner's guide on how to perform efficiency analysis given two (or more) designs. 
