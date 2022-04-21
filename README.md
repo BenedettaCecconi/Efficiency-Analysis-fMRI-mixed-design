@@ -10,7 +10,7 @@ Please note that the efficiency calculation is related to the number of scans (i
 
 ## Scope of this project and what is in this repository 
 The purpose of this project is to provide a beginner's guide on how to perform efficiency analysis given two (or more) designs. 
-Here we provide an example of estimation (and comparison) of the efficiency of two mixed fMRI designs. The goal is to choose the design in which the timing of the stimuli is most efficient in detecting the investigated effects. You will find 
+Here we provide an example of estimation (and comparison) of the efficiency of two mixed fMRI designs. The goal is to choose the design in which the timing of the stimuli is most efficient in detecting the investigated effects. In this repository, you will find 
 
 - a code to calculate efficiency ("Efficiency_Analysis") 
 
